@@ -1,0 +1,138 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.23"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "backend",
+					"jsonFile" : "directory-backend-Debug-1757027d88c457ad9760.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.23"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "backend",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "frontend",
+					"jsonFile" : "directory-frontend-Debug-2ec6fca2583b1affd23c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.23"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "frontend",
+					"targetIndexes" : 
+					[
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "gameOfLife",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "gameOfLifeBackend",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "gameOfLifeFrontend",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "gameOfLife::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gameOfLife-Debug-39f45a62943b63e22911.json",
+					"name" : "gameOfLife",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "gameOfLifeBackend::@e17dcb4e28158375c849",
+					"jsonFile" : "target-gameOfLifeBackend-Debug-70b3978bcf536a024910.json",
+					"name" : "gameOfLifeBackend",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "gameOfLifeFrontend::@73e8a6b9a3e1c0d3809b",
+					"jsonFile" : "target-gameOfLifeFrontend-Debug-bd03effbea5a13132929.json",
+					"name" : "gameOfLifeFrontend",
+					"projectIndex" : 2
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/borod_fu6d0w3/CLionProjects/gameOfLife/cmake-build-debug",
+		"source" : "C:/Users/borod_fu6d0w3/CLionProjects/gameOfLife"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
