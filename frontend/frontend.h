@@ -3,10 +3,10 @@
 #include <vector>
 #include <memory>
 #include "../backend/backend.h"
+#include <SDL.h>
 
 int runWindow();
-void drawCells(SDL_Renderer* renderer, SDL_Texture* aliveCellTexture, int numRows_, int numCols_, int cellWidth_, int cellHeight_, GameOfLife& game, std::vector<std::vector<std::shared_ptr<CellState>>> grid);
-void drawGrid(SDL_Renderer* renderer, int numRows_, int numCols_, int cellWidth_, int cellHeight_);
-void runSimulation(SDL_Window* window, SDL_Renderer* renderer, SDL_Texture* aliveCellTexture, int numRows_, int numCols_, int cellWidth_, int cellHeight_, GameOfLife& game);
+void runSimulation(SDL_Window* window, SDL_Renderer* renderer, SDL_Texture* gridTexture, SDL_Texture* aliveCellTexture, int numRows_, int numCols_, int &width, int &height);
 SDL_Texture* createAliveCellTexture(SDL_Renderer* renderer, int cellWidth, int cellHeight);
+SDL_Texture* createGridTexture(SDL_Renderer* renderer, int numRows_, int numCols_, int screenWidth, int screenHeight);
 #endif

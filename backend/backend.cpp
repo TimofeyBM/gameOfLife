@@ -13,6 +13,99 @@ GameOfLife::GameOfLife(int _rows, int _cols) : rows_(_rows), cols_(_cols) {
         }
     }
 }
+void GameOfLife::setCellState(int row, int col, CellState state) {
+    if (row >= 0 && row < rows_ && col >= 0 && col < cols_) {
+        grid_[row][col] = std::make_shared<CellState>(state);
+    }
+}
+void GameOfLife::moveCellsLeft(int _rows, int _cols) {
+
+
+    // Создайте новую сетку, чтобы временно хранить новые состояния клеток
+    std::vector<std::vector<std::shared_ptr<CellState>>> newGrid = grid_;
+
+    // Сдвигаем клетки на 5 позиций влево
+    for (int i = 0; i < _rows; ++i) {
+        for (int j = 0; j < _cols; ++j) {
+            int newJ = (j + _cols - 5) % _cols; // Рассчитываем новую позицию с учетом сдвига на 5 позиций
+            newGrid[i][newJ] = grid_[i][j];
+        }
+    }
+    grid_ = newGrid;
+    // Обновляем состояние игры с новой сеткой
+
+}
+void GameOfLife::moveCellsUp(int _rows, int _cols) {
+    std::vector<std::vector<std::shared_ptr<CellState>>> newGrid = grid_;
+
+    for (int i = 0; i < _rows; ++i) {
+        int newRow = (i + 5) % _rows; // Рассчитываем новую позицию с учетом сдвига на 5 позиций вверх
+        for (int j = 0; j < _cols; ++j) {
+            newGrid[i][j] = grid_[newRow][j];
+        }
+    }
+
+    grid_ = newGrid;
+}
+void GameOfLife::moveCellsDown(int _rows, int _cols) {
+    std::vector<std::vector<std::shared_ptr<CellState>>> newGrid = grid_;
+
+    for (int i = 0; i < _rows; ++i) {
+        int newRow = (i + _rows - 5) % _rows; // Рассчитываем новую позицию с учетом сдвига на 5 позиций вверх
+        for (int j = 0; j < _cols; ++j) {
+            newGrid[i][j] = grid_[newRow][j];
+        }
+    }
+
+    grid_ = newGrid;
+}
+void GameOfLife::moveCellsRight(int _rows, int _cols) {
+
+
+    // Создайте новую сетку, чтобы временно хранить новые состояния клеток
+    std::vector<std::vector<std::shared_ptr<CellState>>> newGrid = grid_;
+
+    // Сдвигаем клетки на 5 позиций влево
+    for (int i = 0; i < _rows; ++i) {
+        for (int j = 0; j < _cols; ++j) {
+            int newJ = (j + _cols + 5) % _cols; // Рассчитываем новую позицию с учетом сдвига на 5 позиций
+            newGrid[i][newJ] = grid_[i][j];
+        }
+    }
+    grid_ = newGrid;
+    // Обновляем состояние игры с новой сеткой
+
+}
+void GameOfLife::newStateGrid(int _rows, int _cols){
+    if (_rows <= rows_ || _cols <= cols_) {
+        // Новые размеры меньше или равны текущим размерам, ничего не делаем.
+        return;
+    }
+
+    if (_rows > rows_) {
+        for (int i = rows_; i < _rows; i++) {
+            std::vector<std::shared_ptr<CellState>> row;
+            for (int j = 0; j < _cols; j++) {
+                row.push_back(std::make_shared<CellState>(CellState::Dead));
+            }
+            grid_.push_back(row);
+        }
+    }
+
+    // Увеличиваем вектор по столбцам (если необходимо).
+    if (_cols > cols_) {
+        for (int i = 0; i < _rows; i++) {
+            for (int j = cols_; j < _cols; j++) {
+                grid_[i].push_back(std::make_shared<CellState>(CellState::Dead));
+            }
+        }
+    }
+
+    // Обновляем размеры.
+    rows_ = _rows;
+    cols_ = _cols;
+
+}
 const std::vector<std::vector<std::shared_ptr<CellState>>>& GameOfLife::getGrid() const {
     return grid_;
 }
@@ -91,6 +184,29 @@ void GameOfLife::initializeBlockRandom(){
         std::cout << std::endl;
     }
 }
+void GameOfLife::saveStateGrid(){
+    saveGrid_ = grid_;
+}
+
+void GameOfLife::clearAllGrid(){
+    saveGrid_ = grid_;
+    for (int i = 0; i < rows_; ++i) {
+        for (int j = 0; j < cols_; ++j) {
+            grid_[i][j] = std::make_shared<CellState>(CellState::Dead);
+        }
+    }
+}
+void GameOfLife::restoreSavedGrid() {
+    // Проверьте, есть ли сохраненное состояние
+    if (!saveGrid_.empty()) {
+        grid_ = saveGrid_; // Восстановите сохраненное состояние в основной вектор
+    }
+}
+void GameOfLife::clearCellState(int row, int col, CellState state) {
+    if (row >= 0 && row < rows_ && col >= 0 && col < cols_) {
+        grid_[row][col] = std::make_shared<CellState>(state);
+    }
+}
 void GameOfLife::printGridFull() {
     for (int i = 0; i < rows_; ++i) {
         for (int j = 0; j < cols_; ++j) {
@@ -104,7 +220,4 @@ void GameOfLife::printGridFull() {
         std::cout << std::endl;
     }
 }
-
-
-
 

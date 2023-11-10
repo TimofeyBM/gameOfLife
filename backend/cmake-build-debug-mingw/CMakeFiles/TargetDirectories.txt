@@ -1,0 +1,3 @@
+C:/Users/borod_fu6d0w3/CLionProjects/gameOfLife/backend/cmake-build-debug-mingw/CMakeFiles/backend.dir
+C:/Users/borod_fu6d0w3/CLionProjects/gameOfLife/backend/cmake-build-debug-mingw/CMakeFiles/ALL_BUILD.dir
+C:/Users/borod_fu6d0w3/CLionProjects/gameOfLife/backend/cmake-build-debug-mingw/CMakeFiles/ZERO_CHECK.dir

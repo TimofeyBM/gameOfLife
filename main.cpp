@@ -1,50 +1,41 @@
 #include <windows.h>
+
 #include <SDL.h>
 #include "frontend/frontend.h"
-#include "backend/backend.h"
-int numRows = 400;
-int numCols = 750;
-// Размеры ячейки.
-int cellWidth = 1500 / numCols;
-int cellHeight = 800 / numRows;
-int width = 1500;
-int height = 800;
-void f(int _width, int _height) {
-    width = _width;
-    height = _height;
-}
+
+
+
 int main(int argc, char* argv[]) {
+
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         SDL_Log("Unable to initialize SDL: %s", SDL_GetError());
         return 1;
     }
-    // Создание окна и поверхности для рисования.
-    SDL_Window* window = SDL_CreateWindow("Grid Example", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1500, 800, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+    SDL_DisplayMode screenMode;
+    if (SDL_GetDesktopDisplayMode(0, &screenMode) != 0) {
+        SDL_Log("Unable to get desktop display mode: %s", SDL_GetError());
+        return 1;
+    }
+    int width = screenMode.w;
+    int height = screenMode.h;
+    int numRows = height / 10;
+    int numCols = width / 10;
+//
+// Размеры ячейки.
+      int cellWidth = width / numCols;
+      int cellHeight = height / numRows;
+//     Создание окна и поверхности для рисования.
+    SDL_Window* window = SDL_CreateWindow("Grid Example", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenMode.w, screenMode.h-80, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_Surface* icon = SDL_LoadBMP("./img/icon.bmp"); // Загрузка иконки
+    if (icon) {
+        SDL_SetWindowIcon(window, icon); // Установка иконки
+        SDL_FreeSurface(icon); // Освобождение поверхности
+    }
     SDL_Texture* aliveCellTexture = createAliveCellTexture(renderer, cellWidth, cellHeight);
+    SDL_Texture* gridTexture = createGridTexture(renderer, numRows, numCols, 1500, 800);
 
-    GameOfLife game(numRows, numCols);
-    std::vector<std::vector<std::shared_ptr<CellState>> > grid = game.getGrid();
-    game.initializeBlockRandom();
-
-    drawGrid(renderer, numRows, numCols, cellWidth, cellHeight);
-    drawCells(renderer, aliveCellTexture, numRows, numCols, cellWidth, cellHeight, game, grid);
-    runSimulation(window, renderer, aliveCellTexture, numRows, numCols, cellWidth, cellHeight, game);
-    SDL_RenderPresent(renderer);
-//    bool quit = false;
-//    while (!quit) {
-//        SDL_Event e;
-//        while (SDL_PollEvent(&e)) {
-//            if (e.type == SDL_QUIT) {
-//                quit = true;
-//            }
-//        }
-//    }
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-    SDL_Quit();
-
-
+    runSimulation(window, renderer, gridTexture, aliveCellTexture, numRows, numCols, width, height);
     return 0;
 }

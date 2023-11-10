@@ -1,9 +1,0 @@
-C:/Users/borod_fu6d0w3/CLionProjects/gameOfLife/cmake-build-debug/CMakeFiles/gameOfLife.dir
-C:/Users/borod_fu6d0w3/CLionProjects/gameOfLife/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/borod_fu6d0w3/CLionProjects/gameOfLife/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-C:/Users/borod_fu6d0w3/CLionProjects/gameOfLife/cmake-build-debug/backend/CMakeFiles/gameOfLifeBackend.dir
-C:/Users/borod_fu6d0w3/CLionProjects/gameOfLife/cmake-build-debug/backend/CMakeFiles/edit_cache.dir
-C:/Users/borod_fu6d0w3/CLionProjects/gameOfLife/cmake-build-debug/backend/CMakeFiles/rebuild_cache.dir
-C:/Users/borod_fu6d0w3/CLionProjects/gameOfLife/cmake-build-debug/frontend/CMakeFiles/gameOfLifeFrontend.dir
-C:/Users/borod_fu6d0w3/CLionProjects/gameOfLife/cmake-build-debug/frontend/CMakeFiles/edit_cache.dir
-C:/Users/borod_fu6d0w3/CLionProjects/gameOfLife/cmake-build-debug/frontend/CMakeFiles/rebuild_cache.dir
