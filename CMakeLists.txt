@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.23)
 project(gameOfLifeBeta)
 
 set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_EXE_LINKER_FLAGS "-static")
 # Устанавливаем выходную директорию для .exe файла
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
 
@@ -36,7 +35,6 @@ add_executable(gameOfLifeBeta ${GUI_TYPE} main.cpp)
 # Указываем библиотеки для связывания
 target_link_libraries(gameOfLifeBeta
         ${CMAKE_SOURCE_DIR}/frontend/libfrontend.dll
-        ${CMAKE_SOURCE_DIR}/frontend/cmake-build-debug-mingw/libfrontend.dll.a
         SDL2main
         SDL2
         SDL2_ttf

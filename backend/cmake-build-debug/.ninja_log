@@ -1,0 +1,4 @@
+# ninja log v5
+1	6244	7238174698589423	CMakeFiles/backend.dir/backend.cpp.obj	46cdac15909d1c18
+6249	6757	7238174703639706	../libbackend.dll	e8af9211a75196d1
+6249	6757	7238174703639706	libbackend.dll.a	e8af9211a75196d1

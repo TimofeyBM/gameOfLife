@@ -1,0 +1,3 @@
+C:/Users/borod_fu6d0w3/CLionProjects/gameOfLife/backend/cmake-build-debug/CMakeFiles/backend.dir
+C:/Users/borod_fu6d0w3/CLionProjects/gameOfLife/backend/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/borod_fu6d0w3/CLionProjects/gameOfLife/backend/cmake-build-debug/CMakeFiles/rebuild_cache.dir
